@@ -1,5 +1,3 @@
-with Ada.Numerics.Long_Elementary_Functions;
-
 package Goertzel is
    
    -- Custom types for strong typing
