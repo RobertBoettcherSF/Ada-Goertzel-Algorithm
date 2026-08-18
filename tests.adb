@@ -1,9 +1,15 @@
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Assertions; use Ada.Assertions;
 with Goertzel; use Goertzel;
-with Ada.Numerics.Long_Elementary_Functions; use Ada.Numerics.Long_Elementary_Functions;
+with Ada.Numerics;
+with Ada.Numerics.Generic_Elementary_Functions;
 
 procedure Tests is
+   
+   -- Instantiate math functions explicitly for our strongly-typed 'Real'
+   package Real_Math is new Ada.Numerics.Generic_Elementary_Functions (Real);
+   use Real_Math;
+
    -- Helper to generate sine waves for testing
    function Generate_Sine (Freq : Real; Sample_Rate : Real; Length : Positive) return Real_Array is
       Res : Real_Array (1 .. Length);
