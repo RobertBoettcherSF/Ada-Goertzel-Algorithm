@@ -1,8 +1,11 @@
 with Ada.Numerics;
-with Ada.Numerics.Long_Elementary_Functions;
+with Ada.Numerics.Generic_Elementary_Functions;
 
 package body Goertzel is
-   use Ada.Numerics.Long_Elementary_Functions;
+   
+   -- Instantiate math functions explicitly for our strongly-typed 'Real'
+   package Real_Math is new Ada.Numerics.Generic_Elementary_Functions (Real);
+   use Real_Math;
 
    Pi : constant Real := Real(Ada.Numerics.Pi);
 
